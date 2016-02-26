@@ -10,7 +10,7 @@
 
 #define ONE_WIRE_BUS 2
 
-byte const MAX_TEMP_SENSORS = 3;
+byte const MAX_TEMP_SENSORS = 4;
 
 byte const MAX_ID_DIGITS = 7;
 
@@ -19,13 +19,14 @@ byte const ZERO_HEALTH = 0;
 byte tempSensorHealth[MAX_TEMP_SENSORS];
 byte tempModulHealth;
 
-char objSens[MAX_TEMP_SENSORS][12] = {"tempSTR", "tempHOM", "tempWRM"};
+char objSens[MAX_TEMP_SENSORS][12] = {"tempSTR", "tempHOM", "tempWRM", "temp04"};
 
 // Sensors ID's
 byte idTempDat[MAX_TEMP_SENSORS][MAX_ID_DIGITS] = { 
   {40, 255, 244, 81, 176, 21, 3}, // STR
   {40, 221, 16, 81, 3, 0, 0}, // SRV
   {40,  23, 98, 87, 3, 0, 0}, // WRM
+  {40,  23, 98, 87, 3, 0, 0}, // temp04  
 }; 
 
 float current_temp[MAX_TEMP_SENSORS];

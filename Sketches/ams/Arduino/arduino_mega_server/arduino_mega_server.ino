@@ -114,7 +114,7 @@
 #include <DS1307RTC.h>
 
 char const SELF_NAME[] = "Mega";
-char const VERSION[] = "0.14";
+char const VERSION[] = "0.14.2";
 
 // mode net work
 byte const MODE_ONE = 1;
