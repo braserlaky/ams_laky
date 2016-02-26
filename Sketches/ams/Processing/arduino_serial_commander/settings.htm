@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  %& <!-- links -->
+  <script src="settings.js"></script>
+  <title>Основные настройки - Arduino Mega Server</title>
+
+<script>
+  function start() {
+    document.getElementById("hider-2").style.display = "none";
+    logoRotator();
+    getDashData();
+    cycleSettings();
+  }
+
+  var hideInfo1 = false;
+  var hideInfo2 = true;
+
+  function showHide1() {
+    if (hideInfo1) {document.getElementById("hider-1").style.display = "block"; hideInfo1 = false;}
+              else {document.getElementById("hider-1").style.display = "none"; hideInfo1 = true;}
+  }
+  function showHide2() {
+    if (hideInfo2) {document.getElementById("hider-2").style.display = "block"; hideInfo2 = false;}
+              else {document.getElementById("hider-2").style.display = "none"; hideInfo2 = true;}
+  }
+
+%# // scripts.js (mode one)
+var currentPage = 'settings-page';
+</script>
+</head>
+
+<body onload="start();">
+%1 <!-- header -->
+%2 <!-- dash -->
+%3 <!-- menu -->
+  <div class="level">
+    <div class="block">
+      <h1 class="title-page">ОСНОВНЫЕ НАСТРОЙКИ</h1>
+      <div class="level-title clickable" onclick="showHide1()">
+        <h2>Режимы работы</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-1">
+       <form id="check_LEDs" name="LED_form">
+        <div class="cell-2">
+          <div class="box">
+            <h3>Совместная работа</h3>
+              <p><input type="checkbox" name="LED1" value="0" onclick="GetCheck()" /> Тандемный режим</p>
+              <p>Тандемный режим это работа в связке с серверои MajorDoMo, используется для «тяжёлых» задач и разработки</p><br>
+          </div>
+        </div>
+        <div class="cell-2">
+          <div class="box">
+            <h3>Сетевая работа</h3>
+              <p><input type="checkbox" name="LED2" value="0" disabled="disabled" onclick="GetCheck2()" /> Форсированный режим (в разработке)</p>
+              <p>Форсированный режим это ускоренный режим работы интерфейса за счёт захвата всех сокетов</p><br>
+          </div>
+        </div>   
+       </form>        
+      </div> <!-- hider -->
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->
+
+  <div class="level">
+    <div class="block">
+      <div class="level-title clickable" onclick="showHide2()">
+        <h2>...</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-2">
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+      </div> <!-- hider -->
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level   -->
+
+%5
+  
+%4 <!-- footer -->
+</body>
+</html>

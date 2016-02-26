@@ -1,0 +1,145 @@
+<!DOCTYPE html>   
+
+<html>
+<head>
+  <meta charset="utf-8">
+%& <!-- links -->
+  <script src="solder.js"></script>
+  <title>Паяльная станция - Arduino Mega Server</title>
+
+<script>
+  function start() {
+    //document.getElementById("hider-1").style.display = "none";
+    document.getElementById("hider-3").style.display = "none";
+    //document.getElementById("hider-2").style.display = "none";
+    logoRotator();
+    getDashData();
+    getNoo();
+  }
+
+  //var hideInfo1 = true;
+  var hideInfo3 = true;
+  //var hideInfo2 = true;
+
+  /*   
+  function showHide1() {
+    if (hideInfo1) {document.getElementById("hider-1").style.display = "block"; hideInfo1 = false;}
+              else {document.getElementById("hider-1").style.display = "none"; hideInfo1 = true;}
+  } */
+  function showHide3() {
+    if (hideInfo3) {document.getElementById("hider-3").style.display = "block"; hideInfo3 = false;}
+              else {document.getElementById("hider-3").style.display = "none"; hideInfo3 = true;}
+  }  
+  /*
+  function showHide2() {
+    if (hideInfo2) {document.getElementById("hider-2").style.display = "block"; hideInfo2 = false;}
+              else {document.getElementById("hider-2").style.display = "none"; hideInfo2 = true;}
+  }
+  */
+%# // scripts.js (mode one)
+</script>
+</head>
+
+<body onload="start();">
+
+%1 <!-- header -->
+%2 <!-- dash -->
+%3 <!-- menu -->
+  <div class="level">
+    <div class="block">
+      <h1 class="title-page">ПАЯЛЬНАЯ СТАНЦИЯ</h1>    
+      <div class="cell-2">
+        <div class="height-80"></div>
+        <div class="cell-2 auto">
+          <div class="box-control" id="noo2box" onclick="noo2StateAction()">
+            <p class="gliph-control" id="noo2-state-gliph">≈</p>
+            <p id="noo2-state-text">ON/OFF</p>
+          </div>
+        </div>
+      </div>
+      <div class="cell-2">
+        <div class="box-image">
+          <img src="solder.jpg" alt="">
+        </div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->
+
+  <div class="level">
+    <div class="block">
+      <div class="level-title clickable" style="margin-top:0;" onclick="showHide3()">
+        <h2>Настройки</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-3">
+        <div class="cell-1">
+        <div class="box-control-multi-base">
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi10" onclick="noo2Multi10()">
+              <p id="noo2-multi10-text">180°</p>            
+              <p class="gliph-control-multi" id="noo2-multi10-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi20" onclick="noo2Multi20()">
+              <p id="noo2-multi20-text">200°</p>            
+              <p class="gliph-control-multi" id="noo2-multi20-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi30" onclick="noo2Multi30()">
+              <p id="noo2-multi30-text">220°</p>
+              <p class="gliph-control-multi" id="noo2-multi30-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi40" onclick="noo2Multi40()">
+              <p id="noo2-multi40-text">240°</p>
+              <p class="gliph-control-multi" id="noo2-multi40-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi50" onclick="noo2Multi50()">
+              <p id="noo2-multi50-text">260°</p>
+              <p class="gliph-control-multi" id="noo2-multi50-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi60" onclick="noo2Multi60()">
+              <p id="noo2-multi60-text">280°</p>
+              <p class="gliph-control-multi" id="noo2-multi60-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi70" onclick="noo2Multi70()">
+              <p id="noo2-multi70-text">300°</p>
+              <p class="gliph-control-multi" id="noo2-multi70-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi80" onclick="noo2Multi80()">
+              <p id="noo2-multi80-text">320°</p>
+              <p class="gliph-control-multi" id="noo2-multi80-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-9">
+            <div class="box-control-multi" id="noo2multi90" onclick="noo2Multi90()">
+              <p id="noo2-multi90-text">360°</p>
+              <p class="gliph-control-multi" id="noo2-multi90-gliph">▀</p>
+            </div>
+          </div>
+          <div style="clear:both"></div>     
+          </div>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->
+
+%5
+  
+%4 <!-- footer -->
+</body>
+</html>

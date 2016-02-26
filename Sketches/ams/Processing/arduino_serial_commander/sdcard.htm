@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+%& <!-- links -->
+  <script src="sdcard.js"></script>
+  <title>SD карта - Arduino Mega Server</title>
+
+<script>
+  function start() {
+    logoRotator();
+    getSdSettings();
+    getDashData();
+  }
+
+%# // scripts.js (mode one)
+</script>
+</head>
+
+<body onload="start();">
+%1 <!-- header -->
+%2 <!-- dash -->
+%3 <!-- menu -->
+  <div class="level">
+    <div class="block">
+      <h1 class="title-page">SD КАРТА</h1>
+      <div class="cell-3">
+        <div class="box">
+          <h3>microSD</h3>
+          <p>Тип: <span class="value" id="sd-card-type">...</span></p>
+          <p>Файловая система: <span class="value" id="sd-card-file-system">...</span></p>
+          <p>Объём: <span class="value" id="sd-volume-size">...</span> МБ</p>
+        </div>
+      </div>
+      <div class="cell-3x2">
+        <div class="box">
+          <h3>Файлы</h3>
+          <p><span class="value" id="sd-root-dir">...</span></p>
+        </div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->
+
+%5
+  
+%4 <!-- footer -->
+</body>
+</html>

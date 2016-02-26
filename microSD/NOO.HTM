@@ -1,0 +1,232 @@
+<!DOCTYPE html>   
+
+<html>
+<head>
+  <meta charset="utf-8">
+%& <!-- links -->
+  <script src="noo.js"></script>
+  <title>nooLite - Arduino Mega Server</title>
+
+<script>
+  function start() {
+    document.getElementById("hider-1").style.display = "none";
+    document.getElementById("hider-3").style.display = "none";
+    document.getElementById("hider-2").style.display = "none";
+    logoRotator();
+    getDashData();
+    getNoo();
+  }
+
+  var hideInfo1 = true;
+  var hideInfo3 = true;
+  var hideInfo2 = true;
+
+  function showHide1() {
+    if (hideInfo1) {document.getElementById("hider-1").style.display = "block"; hideInfo1 = false;}
+              else {document.getElementById("hider-1").style.display = "none"; hideInfo1 = true;}
+  }
+  function showHide3() {
+    if (hideInfo3) {document.getElementById("hider-3").style.display = "block"; hideInfo3 = false;}
+              else {document.getElementById("hider-3").style.display = "none"; hideInfo3 = true;}
+  }  
+  function showHide2() {
+    if (hideInfo2) {document.getElementById("hider-2").style.display = "block"; hideInfo2 = false;}
+              else {document.getElementById("hider-2").style.display = "none"; hideInfo2 = true;}
+  }
+
+%# // scripts.js (mode one)
+</script>
+</head>
+
+<body onload="start();">
+
+%1 <!-- header -->
+%2 <!-- dash -->
+%3 <!-- menu -->
+  <div class="level">
+    <div class="block">
+      <h1 class="title-page">NOOLITE</h1>
+      <div class="level-title clickable" onclick="showHide1()">
+        <h2>Блок 1</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-1">
+        <div class="cell-5">
+          <div class="box-control" id="noo1box" onclick="noo1StateAction()">
+            <h3 class="gliph-control" id="noo1-state-gliph">☼</h3>
+            <p id="noo1-state-text">nooLite 1</p>
+          </div>
+        </div>
+        <div style="clear:both"></div>        
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->
+
+  <div class="level">
+    <div class="block">
+      <div class="level-title clickable" onclick="showHide3()">
+        <h2>Блок 2</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-3">
+        <div class="cell-5">
+          <div class="box-control" id="noo2box" onclick="noo2StateAction()">
+            <p class="gliph-control" id="noo2-state-gliph">☼</p>
+            <p id="noo2-state-text">nooLite 2</p>
+          </div>
+        </div>
+        <div class="cell-5">
+        <div class="box-control-multi-base">
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi10" onclick="noo2Multi10()">
+              <p id="noo2-multi10-text">10%</p>            
+              <p class="gliph-control-multi" id="noo2-multi10-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi20" onclick="noo2Multi20()">
+              <p id="noo2-multi20-text">20%</p>            
+              <p class="gliph-control-multi" id="noo2-multi20-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi30" onclick="noo2Multi30()">
+              <p id="noo2-multi30-text">30%</p>
+              <p class="gliph-control-multi" id="noo2-multi30-gliph">▀</p>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi40" onclick="noo2Multi40()">
+              <p id="noo2-multi40-text">40%</p>
+              <p class="gliph-control-multi" id="noo2-multi40-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi50" onclick="noo2Multi50()">
+              <p id="noo2-multi50-text">50%</p>
+              <p class="gliph-control-multi" id="noo2-multi50-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi60" onclick="noo2Multi60()">
+              <p id="noo2-multi60-text">60%</p>
+              <p class="gliph-control-multi" id="noo2-multi60-gliph">▀</p>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi70" onclick="noo2Multi70()">
+              <p id="noo2-multi70-text">70%</p>
+              <p class="gliph-control-multi" id="noo2-multi70-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi80" onclick="noo2Multi80()">
+              <p id="noo2-multi80-text">80%</p>
+              <p class="gliph-control-multi" id="noo2-multi80-gliph">▀</p>
+            </div>
+          </div>
+          <div class="cell-3">
+            <div class="box-control-multi" id="noo2multi90" onclick="noo2Multi90()">
+              <p id="noo2-multi90-text">90%</p>
+              <p class="gliph-control-multi" id="noo2-multi90-gliph">▀</p>
+            </div>
+          </div>
+          <div style="clear:both"></div>     
+          </div>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->  
+  
+  <div class="level">
+    <div class="block">
+      <div class="level-title clickable" onclick="showHide2()">
+        <h2>Привязка</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-2">
+        <div class="cell-3">
+          <div class="box">
+            <h3>Привязка блока</h3>
+            <form id="nooBindFormId" name="nooBindForm">
+              <select size="1" id="channel" name="channels1">
+                <option value="0">0 канал</option>
+                <option value="1">1 канал</option>
+                <option value="2">2 канал</option>
+                <option value="3">3 канал</option>
+                <option value="4">4 канал</option>
+                <option value="5">5 канал</option>
+                <option value="6">6 канал</option>
+                <option value="7">7 канал</option>
+                <option value="8">8 канал</option>
+                <option value="9">9 канал</option>
+                <option value="10">10 канал</option>
+                <option value="11">11 канал</option>
+                <option value="12">12 канал</option>
+                <option value="13">13 канал</option>
+                <option value="14">14 канал</option>
+                <option value="15">15 канал</option>
+                <option value="16">16 канал</option>
+                <option value="17">17 канал</option>
+                <option value="18">18 канал</option>
+                <option value="19">19 канал</option>
+                <option value="20">20 канал</option>
+                <option value="21">21 канал</option>
+                <option value="22">22 канал</option>
+                <option value="23">23 канал</option>
+                <option value="24">24 канал</option>
+                <option value="25">25 канал</option>
+                <option value="26">26 канал</option>
+                <option value="27">27 канал</option>
+                <option value="28">28 канал</option>
+                <option value="29">29 канал</option>
+                <option value="30">30 канал</option>
+                <option value="31">31 канал</option>
+              </select>
+
+              <div class="input-radio">
+                <p><input type="radio" name="bindUnbind" id="nooBind" value="1" checked="checked"/> Привязать</p>
+                <p><input type="radio" name="bindUnbind" id="nooUnbind" value="0" /> Отвязать</p>
+              </div>
+
+              <input type="button" value="Отправить" onclick="nooBindAction()">
+            </form>
+          </div>
+        </div>
+        <div class="cell-3">
+          <div class="box">
+            <h3>Привязка</h3>
+            <p>1. Нажмите кнопку на выбранном блоке и светодиод замигает раз в секунду.</p>
+            <p>2. Выберите номер канала и пошлите команду «привязка», нажав на кнопку. Светодиод замигает чаще.</p>
+            <p>3. Снова нажмите кнопку на блоке и подтвердите привязку.</p>
+          </div>
+        </div>
+         <div class="cell-3">
+          <div class="box">
+            <h3>Отвязка</h3>
+            <p>1. Выберите номер канала и пошлите команду «отвязка», нажав на кнопку.</p>
+            <p>2. Далее, в течение 15 секунд, нажмите кнопку на блоке и подтвердите отвязку выбранного блока.</p>
+          </div>
+        </div>       
+        <script>
+          function selectAlert() {
+            alert("Канал: " + document.getElementById("channel").value +
+             "\nКоманда: " + nooBindForm.bindUnbind.value);
+          }
+        </script>
+
+      </div> <!-- hider-2 -->
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->
+
+%5
+
+%4 <!-- footer -->
+</body>
+</html>

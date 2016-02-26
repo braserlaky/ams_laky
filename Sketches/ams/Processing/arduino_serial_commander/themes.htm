@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  %& <!-- links -->
+  <script src="themes.js"></script>
+  <title>Темы и сайты - Arduino Mega Server</title>
+
+<script>
+  function start() {
+    document.getElementById("hider-2").style.display = "none";
+    logoRotator();
+    getDashData();
+    cycleThemes();
+  }
+
+  var hideInfo1 = false;
+  var hideInfo2 = true;
+
+  function showHide1() {
+    if (hideInfo1) {document.getElementById("hider-1").style.display = "block"; hideInfo1 = false;}
+              else {document.getElementById("hider-1").style.display = "none"; hideInfo1 = true;}
+  }
+  function showHide2() {
+    if (hideInfo2) {document.getElementById("hider-2").style.display = "block"; hideInfo2 = false;}
+              else {document.getElementById("hider-2").style.display = "none"; hideInfo2 = true;}
+  }
+
+%# // scripts.js (mode one)
+var currentPage = 'themes-page';
+</script>
+</head>
+
+<body onload="start();">
+%1 <!-- header -->
+%2 <!-- dash -->
+%3 <!-- menu -->
+  <div class="level">
+    <div class="block">
+      <h1 class="title-page">ТЕМЫ И САЙТЫ</h1>
+      <div class="level-title clickable" onclick="showHide1()">
+        <h2>Оформление и сайты партнёров</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-1">
+        <div class="cell-2">
+          <div class="box">
+            <h3>Сайты-темы партнёров</h3>
+            <p><input type="radio" name="radioTest" id="rd2" value="Радио (2)" onclick="setRadio()" /> Амперка <span class="red"></span></p>
+            <p><input type="radio" name="radioTest" id="rd1" value="Радио (1)" onclick="setRadio()" /> Arduino-KiT <span class="red">скидки</span></p>
+            <p><input type="radio" name="radioTest" id="rd3" value="Радио (3)" onclick="setRadio()" /> Geegrow <span class="red">скидки</span></p>
+            <p><input type="radio" name="radioTest" id="rd4" value="Радио (4)" onclick="setRadio()" /> nooLite <span class="red">New!</span></p>
+            <p class="disable"><input type="radio" name="radioTest" id="rd10" disabled="disabled" /> Ваша компания</p>
+            <p>Сайты-темы наших партнёров: настройки, примеры, информация и эксклюзивные предложения для вас</p>
+          </div>
+        </div>
+        <div class="cell-2">
+          <div class="box">
+            <h3>Стили дизайна</h3>
+            <p><input type="radio" name="radioTest" id="rd7" value="Радио (2)" onclick="setRadio()" /> Гик моде</p>
+            <p><input type="radio" name="radioTest" id="rd5" value="Радио (5)" onclick="setRadio()" /> Домашний</p>
+            <p><input type="radio" name="radioTest" id="rd6" value="Радио (6)" onclick="setRadio()" /> Модерн</p>
+            <p><input type="radio" name="radioTest" id="rd8" value="Радио (8)" onclick="setRadio()" /> Хакер дизайн</p>
+            <p>То, как будет выглядеть ваш сайт. От техно-гиков к полному минимализму</p>
+          </div>
+        </div>
+      </div> <!-- hider -->
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level -->
+
+  <div class="level">
+    <div class="block">
+      <div class="level-title clickable" onclick="showHide2()">
+        <h2>...</h2>
+        <img src="a-show.png" alt="">
+      </div>
+      <div id="hider-2">
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+        <div class="cell-4">
+          <div class="box">
+
+          </div>
+        </div>
+      </div> <!-- hider -->
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level   -->
+
+%5
+  
+%4 <!-- footer -->
+</body>
+</html>
