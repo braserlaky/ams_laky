@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <base href="http://hi-lab.ru/arduino-mega-server/manuals/interface/dash-panel/49-how-add-temperature-to-dash" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Dash-панель, руководства, Arduino Mega Server, AMS, documentation, документация, Ардуино Мега Сервер, АМС" />
+  <meta name="description" content="Как добавить дополнительный датчик температуры на dash-панель — руководства проекта Arduino Mega Server" />
+  <title>Как добавить дополнительный датчик температуры на dash-панель - Hi-Lab.ru</title>
+  <link href="/templates/art/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+  <link rel="stylesheet" href="/templates/art/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/art/css/effects.css" type="text/css" />
+  <link rel="stylesheet" href="/templates/art/css/style-ams.css" type="text/css" />
+  <script src="/media/jui/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/media/jui/js/jquery-noconflict.js" type="text/javascript"></script>
+  <script src="/media/jui/js/jquery-migrate.min.js" type="text/javascript"></script>
+  <script src="/media/system/js/caption.js" type="text/javascript"></script>
+  <script src="/media/jui/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="/templates/art/js/template.js" type="text/javascript"></script>
+  <script src="/media/system/js/html5fallback.js" type="text/javascript"></script>
+  <script type="text/javascript">
+jQuery(window).on('load',  function() {
+				new JCaption('img.caption');
+			});jQuery(document).ready(function(){
+	jQuery('.hasTooltip').tooltip({"html": true,"container": "body"});
+});
+  </script>
+
+
+  <!--[if lt IE 9]>
+    <script src="/media/jui/js/html5.js"></script>
+  <![endif]-->
+  </head>
+
+<body class="site com_content view-article no-layout no-task itemid-220 fluid">
+
+  <!-- body -->
+  <div class="body">
+    <div class="container-fluid">
+
+      <div class="level-above-header">
+        <div class="block">
+          <header class="header" role="banner">
+            <div class="header-inner clearfix">
+              <a class="brand pull-left" href="/">
+                <img src="http://hi-lab.ru/images/logos/logo-hi-lab-mini.png" alt="Hi-Lab.ru" />                              </a>
+              <div class="pull-right">
+                
+
+                                  <nav class="navigation" role="navigation">
+                    <div class="navbar pull-left">
+                      <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </a>
+                    </div>
+                    <div class="nav-collapse">
+                      <ul class="nav menu nav-tabs">
+<li class="item-108"><a href="/" >Главная</a></li><li class="item-110"><a href="/about" >О сайте</a></li><li class="item-137"><a href="/english/arduino-mega-server" >English</a></li></ul>
+
+                    </div>
+                  </nav>
+                              </div>
+            </div>
+          </header> <!-- header -->
+        </div>
+      </div> <!-- level-above-header -->
+
+          
+
+<div class="custom"  >
+	      <div class="level-header theme-colors">
+        <div class="block">
+          <div class="cell-2">
+            <div class="box-header-title">
+              <h2 class="big-text">Arduino Mega Server</h2>
+              <p class="lead">Фантастические возможности уже сегодня</p>
+            </div>
+          </div>
+          <div class="cell-2">
+            <div class="box-header-image">
+              <img class="auto" src="/images/pics/rocket.png" alt="Arduino Mega Server">
+            </div>
+          </div>
+          <div style="clear:both"></div>
+        </div>
+        <img class="slalom height-50" src="/images/elements/bottom-center-transparent-white.png" alt="">
+
+
+      </div> <!-- level-header --></div>
+
+      <div class="level-menu">
+        <div class="block">
+                      <nav class="navigation" role="navigation">
+              <div class="navbar pull-left">
+                <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+              </div>
+              <div class="nav-collapse">
+                <ul class="nav menu nav-pills">
+<li class="item-125 alias-parent-active"><a href="/arduino-mega-server" >Проект</a></li><li class="item-127 parent"><a href="/arduino-mega-server/details" >Подробности</a></li><li class="item-128 parent"><a href="/arduino-mega-server/documentation" >Документация</a></li><li class="item-218 active parent"><a href="/arduino-mega-server/manuals" >Руководства</a></li></ul>
+
+              </div>
+            </nav>
+                  </div>
+      </div> <!-- level-menu -->
+
+       <!-- banners-top -->
+
+      <div class="level-main">
+                  <div class="block promo-30">
+                  <div class="row-fluid">
+             <!-- left sidebar -->
+
+            <main id="content" role="main" class="span9">
+              
+              
+              <div id="system-message-container">
+	</div>
+
+              <div class="item-page" itemscope itemtype="http://schema.org/Article">
+	<meta itemprop="inLanguage" content="ru-RU" />
+	
+		
+			<div class="page-header">
+		<h2 itemprop="name">
+							Как добавить дополнительный датчик температуры на dash-панель					</h2>
+							</div>
+					
+	
+	
+		
+								<div itemprop="articleBody">
+		<div class="article">
+
+<p>Добавить дополнительный датчик температуры на dash-панель совсем несложно. Давайте подробно рассмотрим как это можно сделать.</p>
+
+ 
+
+<h2>Модуль Temperature</h2>
+
+<p>В модуле <code>Temperature</code> скетча Arduino Mega Server находится весь код, ответственный за обслуживание температурных датчиков. Из всего этого кода нас будут интересовать два массива: <code>objSens</code>, в котором хранятся названия датчиков</p>
+
+<pre>
+char objSens[MAX_TEMP_SENSORS][12] = {"tempSTR", "tempHOM", "tempWRM"};
+</pre>
+
+<p>и <code>current_temp</code>, который содержит текущие значения температуры датчиков.</p>
+
+<pre>
+float current_temp[MAX_TEMP_SENSORS];
+</pre>
+
+<p>По умолчанию, в системе Arduino Mega Server имеется поддержка трёх датчиков, причём предполагается, что первый датчик — уличный и его значение выводится в dash-панель сайта AMS. Наша задача — вывести значение второго датчика — <code>tempHOM</code>, предполагается, что это температура внутри дома.</p>
+
+<h2>Модуль Server Ajax</h2>
+
+<p>Модуль <code>Server Ajax</code> производит разбор запросов браузера и отсылает ответы на эти запросы. В данном случае, нас будет интересовать функция <code>responseDash()</code>, которая занимается обслуживанием dash-панели, т. е. постоянно, раз в две секунды, посылает основную информацию из контроллера в браузер.</p>
+
+<p>Из всего кода этой функции нас будет интересовать участок, ответственный за посылку температуры со всех датчиков</p>
+
+<pre>
+    #ifdef TEMP_FEATURE
+      for (byte i = 0; i < MAX_TEMP_SENSORS; i++) {
+        sendTagFloat(objSens[i], "", current_temp[i], cl);
+        sendTagByte(objSens[i], "Health", tempSensorHealth[i], cl);
+      }
+      sendTagByte("mdTempHealth", "", tempModulHealth, cl);
+    #endif
+</pre>
+
+<p>где непосредственно посылкой значения температуры занимается строка</p>
+
+<pre>
+sendTagFloat(objSens[i], "", current_temp[i], cl);
+</pre>
+
+<p>где <code>objSens[i]</code> посылает название датчика, а <code>current_temp[i]</code> — значение температуры.</p>
+
+<p>В скетче мы ничего менять не будем, код был разобран для того, чтобы вы понимали, как это работает. Теперь переходим непосредственно к браузеру и JavaScript, которые принимают данные и выводят их в dash-панель.</p>
+
+<h2>Файл scripts.js</h2>
+
+<p>Обслуживанием dash-панели на стороне браузера занимается функция <code>getDashData()</code>, находящаяся в файле <code>scripts.js</code>. Из всего её кода нас будет интересовать участок</p>
+
+<pre>
+          // Temperature
+          try {
+            var tempSTR = this.responseXML.getElementsByTagName('tempSTR')[0].childNodes[0].nodeValue;
+          } catch (err) {
+              tempSTR = "-";
+            }
+</pre>
+
+<p>здесь «ловится» значение температуры первого датчика с названием <code>tempSTR</code> и это значение присваивается переменной <code>tempSTR</code>. Конструкция <code>try/catch</code> предназначена для ловли ошибок и позволяет нормально работать скрипту, даже если не приходит никаких значений.</p>
+
+<p>Далее в работу вступает конструкция,</p>
+
+<pre>
+          try {
+            var tempSTR_ = Math.round(tempSTR, 1);
+            document.getElementById("dash-voltage").innerHTML = tempSTR_ + "°";
+            document.getElementById("dash-voltage-hide").innerHTML = tempSTR_ + "°";
+          } catch (err) { }
+</pre>
+
+<p>которая округляет значение температуры с точностью до одного знака после запятой и выводит его в два поля на веб-странице, помеченных, как <code>dash-voltage</code> и <code>dash-voltage-hide</code>. Первое — это то значение, которое вы видите в dash-панели в обычном режиме, второе — во время адаптивного уменьшения страницы (например, на смартфоне).</p>
+
+<div class="alert alert-info">
+  <p><i class="icon-apply"></i> <strong>Примечание.</strong> Может вызвать удивление, почему температура выводится в поля, обозначенные как dash-voltage. Это следствие разработки и развития проекта, раньше в эти поля выводилось значение напряжения и идентификаторы просто не успели переименоваться.</p>
+</div>
+
+<p>Итак, теперь, после подробного объяснения механизмов работы системы, вам должно быть понятно, что нужно сделать для добавления ещё одного значения температуры в dash-панель. Добавляем следующий код</p>
+
+<pre>
+          try {
+            var tempHOM = this.responseXML.getElementsByTagName('tempHOM')[0].childNodes[0].nodeValue;
+          } catch (err) {
+              tempHOM = "-";
+            }
+
+          try {
+            var tempHOM_ = Math.round(tempHOM, 1);
+            document.getElementById("temp-home").innerHTML = tempHOM_ + "°";
+            document.getElementById("temp-home-hide").innerHTML = tempHOM_ + "°";
+          } catch (err) { }
+</pre>
+
+<p>рядом с предыдущим кодом и заменяем идентификаторы на <code>temp-home</code>.</p>
+
+<p>На этом доработка файла <code>scripts.js</code> закончена и последнее, что нам нужно сделать, это добавить поля, в которые будет выводиться значение температуры со второго датчика непосредственно в dash-панели.</p>
+
+<h2>Файл _dash.htm</h2>
+
+<p>HTML код dash-панели находится в файле <code>_dash.htm</code>. Для добавления вывода значения второго датчика температуры вам нужно найти в этом файле строки <code>dash-voltage</code> и <code>dash-voltage-hide</code></p>
+
+<pre>
+&lt;p&gt;На улице: &lt;span class="value" id="dash-voltage-hide"&gt;...&lt;/span&gt; C&lt;/p&gt;<br />&lt;p&gt;На улице: &lt;span class="value" id="dash-voltage"&gt;...&lt;/span&gt; C&lt;/p&gt;
+</pre>
+
+<p>и добавить рядом с ними, по аналогии, следующие строки</p>
+
+<pre>
+&lt;p&gt;Дома: &lt;span class="value" id="temp-home-hide"&gt;...&lt;/span&gt; C&lt;/p&gt;<br />&lt;p&gt;Дома: &lt;span class="value" id="temp-home"&gt;...&lt;/span&gt; C&lt;/p&gt;
+</pre>
+
+<p>это «посадочные места» для новых значений температуры. Их необязательно добавлять рядом со старыми значениями, можно добавить их в любое нужное вам место dash-панели.</p>
+
+<h2>Заключение</h2>
+
+<p>Вот, собственно, и всё, для добавления ещё одного значения температуры в dash-панель вам нужно всего лишь добавить две конструкции в файл <code>scripts.js</code> и две строки в файл <code>_dash.htm</code>. Неправда ли, это совсем несложно?</p>
+
+<div class="alert alert-info">
+  <p><i class="icon-apply"></i> <strong>Подсказка.</strong> Редактирование и добавление на карту памяти такого большого файла, как scripts.js «на лету» может вызвать трудности у начинающих пользователей. Возможно, вам имеет смысл отредактировать и записать этот файл на карту обычным способом, выключив сервер и вынув карту памяти из Ethernet Shield.</p>
+</div>
+
+<div class="alert alert-info">
+  <p><strong>Обратите внимание.</strong> Система Arduino Mega Server непрерывно развивается и в код проекта постоянно вносятся изменения и улучшения, поэтому, описание и документация может не соответствовать вашей конкретной версии системы. Последняя правка этой страницы относится к <span class="label label-inverse">0.14</span> версии системы.</p>
+</div>
+
+
+
+</div> <!-- article -->	</div>
+
+	
+						</div>
+
+
+                              <div class="more-info">
+                  		<div class="moduletable">
+						
+<ul itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
+			<li class="active">
+			&#160;
+		</li>
+	
+				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+									<a itemprop="item" href="/arduino-mega-server" class="pathway">
+						<span itemprop="name">
+							Arduino Mega Server						</span>
+					</a>
+				
+									<span class="divider">
+						|					</span>
+								<meta itemprop="position" content="1">
+			</li>
+					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+									<a itemprop="item" href="/arduino-mega-server/manuals" class="pathway">
+						<span itemprop="name">
+							Руководства						</span>
+					</a>
+				
+									<span class="divider">
+						|					</span>
+								<meta itemprop="position" content="2">
+			</li>
+					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+									<a itemprop="item" href="/arduino-mega-server/manuals/interface" class="pathway">
+						<span itemprop="name">
+							Интерфейс						</span>
+					</a>
+				
+									<span class="divider">
+						|					</span>
+								<meta itemprop="position" content="3">
+			</li>
+					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+									<a itemprop="item" href="/arduino-mega-server/manuals/interface/dash-panel" class="pathway">
+						<span itemprop="name">
+							Dash-панель						</span>
+					</a>
+				
+									<span class="divider">
+						|					</span>
+								<meta itemprop="position" content="4">
+			</li>
+					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active">
+				<span itemprop="name">
+					Как добавить дополнительный датчик температуры на dash-панель				</span>
+				<meta itemprop="position" content="5">
+			</li>
+		</ul>
+		</div>
+	
+                </div>
+                <div style="clear:both"></div>
+                          </main> <!-- end content -->
+
+                          <div id="aside" class="span3">
+                <div class="well "><h3 class="page-header">Руководства</h3><ul class="nav menu">
+<li class="item-219 active deeper parent"><a href="/arduino-mega-server/manuals/interface" >Интерфейс</a><ul class="nav-child unstyled small"><li class="item-220 current active"><a href="/arduino-mega-server/manuals/interface/dash-panel" >Dash-панель</a></li></ul></li></ul>
+</div><div class="well ">
+
+<div class="custom"  >
+	<!-- SmartResponder.ru subscribe form code (begin) -->
+<link rel="stylesheet" href="https://imgs.smartresponder.ru/e1bbeb24091b44f1f4048bbc87edacd11278fd23/">
+<script type="text/javascript" src="https://imgs.smartresponder.ru/52568378bec6f68117c48f2f786db466014ee5a0/"></script>
+<script type="text/javascript">
+    _sr(function() {
+        _sr('form[name="SR_form_341822_26"]').find('div#sr-preload_').prop('id', 'sr-preload_341822_26');
+        _sr('#sr-preload_341822_26').css({'width':parseInt(_sr('form[name="SR_form_341822_26"]').width() + 'px'), 'height':parseInt(_sr('form[name="SR_form_341822_26"]').height()) + 'px', 'line-height':parseInt(_sr('form[name="SR_form_341822_26"]').height()) + 'px'}).show();
+        if(_sr('form[name="SR_form_341822_26"]').find('input[name="script_url_341822_26"]').length) {
+            _sr.ajax({
+                url: _sr('input[name="script_url_341822_26"]').val() + '/' + (typeof document.charset !== 'undefined' ? document.charset : document.characterSet),
+                dataType: "script",
+                success: function() {
+                    _sr('#sr-preload_341822_26').hide();
+                }
+            });
+        }
+    });
+</script>
+<div id="outer_alignment" align="center">
+    <form style="border: 1px solid rgb(220, 220, 220); border-radius: 6px; width: 198px; margin-top:5px; margin-bottom:5px;" class="sr-box" method="post" action="https://smartresponder.ru/subscribe.html" name="SR_form_341822_26">
+        <input name="field_name" class="sr-name" type="text">
+        <div id="sr-preload_" style="display: none; background-color: #f6f6f6; opacity: 0.5; position: absolute; z-index: 100; text-align: center; font: bold 15px Arial;">Загрузка...</div>
+        <ul class="sr-box-list" style="padding: 0 10px;"><li class="sr-341822_26" style="text-align: center; background-color: rgb(253, 178, 44); height: auto; padding: 3px; display: block; border: 0px none; border-radius: 6px 6px 0px 0px;"><label style="font-family: arial; color: rgb(245, 245, 245); font-size: 19px; font-weight: bold; line-height: 25px; padding: 15px 15px; background: url('https://imgs.smartresponder.ru/on/d363712d76c7bcfb99bf419b2122ebd7afbfd10f/') no-repeat scroll center bottom transparent; width: 100%; text-align: center; height: auto; box-sizing: border-box; border-radius: 6px 6px 0px 0px;" class="">Новости проекта</label><input style="font-family: Arial; color: rgb(0, 0, 0); font-size: 12px; font-style: normal; font-weight: normal; background-color: rgb(255, 255, 255); border: medium none; box-shadow: none;" value="" name="element_header" type="hidden"></li><li class="sr-341822_26" class="" style="text-align: center; background-color: rgb(253, 178, 44); position: relative; top: 0px; left: 0px; height: 54px; border-radius: 0px;"><label class="remove_labels" style="font-weight: normal; font-family: arial; color: rgb(0, 0, 0); font-size: 12px; font-style: normal; margin-top: 15px; display: none;"></label><input value="Ваше имя:" style="font-weight: normal; background-color: rgb(255, 255, 255); font-family: arial; font-style: normal; border: 1px solid rgb(191, 191, 191); height: 30px; box-shadow: none; background-image: none; margin-top: 10px; font-size: 15px; color: rgb(166, 166, 166); border-radius: 6px;" name="field_name_first" type="text"></li><li class="sr-341822_26" style="text-align: center; background-color: rgb(253, 178, 44); height: 54px; border-radius: 0px;">
+<label class="remove_labels" style="font-weight: normal; font-family: arial; color: rgb(0, 0, 0); font-size: 12px; font-style: normal; display: none;"></label>
+<input value="Ваш email-адрес" style="background-image: none; font-weight: normal; background-color: rgb(255, 255, 255); font-family: arial; font-style: normal; border: 1px solid rgb(191, 191, 191); height: 30px; box-shadow: none; margin-top: 2px; font-size: 15px; color: rgb(166, 166, 166); border-radius: 6px;" name="field_email" class="sr-required" type="text">
+            </li><li class="sr-341822_26" style="text-align: center; background-color: rgb(253, 178, 44); border: 0px none; height: 60px; border-radius: 0px 0px 6px 6px;"><table id="elem_table_subscribe" style="display: inline-table; border-collapse: separate; margin-top: 0;" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td id="elem_container_subscribe" style="vertical-align: middle;"><input style="font-family: arial; color: rgb(255, 255, 255); font-weight: bold; border: 1px solid rgb(200, 160, 60); border-radius: 7px; background: #d82; height: 36px; width: 100%; margin: 0px; box-shadow: none; font-size: 15px; padding: 0px 19px;" name="subscribe" value="Подписаться!" type="submit"></td></tr></tbody></table></li></ul>
+        <input name="uid" value="724749" type="hidden">
+    <input name="did[]" value="880075" type="hidden"><input name="tid" value="0" type="hidden"><input name="lang" value="ru" type="hidden"><input value="https://imgs.smartresponder.ru/on/43f850b5a10af3a4105e1eadac4d308d6a12adc6/341822_26" name="script_url_341822_26" type="hidden"></form>
+</div>
+<!-- SmartResponder.ru subscribe form code (end) --></div>
+</div><div class="well "><h3 class="page-header">Программа Получи значок</h3>
+
+<div class="custom"  >
+	<a href="/arduino-mega-server/details/marketing-programs/get-sign-compatible"><img class="auto" src="/images/promo/ams-sign-compatible-middle.png" alt="Оборудование, совместимое с Arduino Mega Server"></a></div>
+</div>
+              </div>
+             <!-- right sidebar -->
+          </div> <!-- row-fluid -->
+                  </div>
+              </div> <!-- level-main -->
+
+       <!-- banners-bottom -->
+
+    </div> <!-- container -->
+  </div> <!-- body -->
+
+  <div class="level">
+    <div class="block">
+      <p class="text-right"><a href="#top" id="back-top">наверх</a></p>
+    </div>
+  </div>
+
+  <div class="level-footer">
+    <div class="block">
+      <footer class="footer" role="contentinfo">
+        <div class="container-fluid">
+          <div class="cell-4">
+            <div class="box-footer1">&nbsp;
+                              <div class="well  well-dark"><div class="search well-dark">
+	<form action="/arduino-mega-server/manuals/interface/dash-panel" method="post" class="form-inline">
+		<label for="mod-search-searchword" class="element-invisible">Искать...</label> <input name="searchword" id="mod-search-searchword" maxlength="200"  class="inputbox search-query" type="search" placeholder="Поиск..." />		<input type="hidden" name="task" value="search" />
+		<input type="hidden" name="option" value="com_search" />
+		<input type="hidden" name="Itemid" value="220" />
+	</form>
+</div>
+</div>
+                          </div>
+          </div>
+          <div class="cell-4">
+            <div class="box-footer2">&nbsp;
+                              <div class="well  well-dark"><h3 class="page-header">Hi-Lab</h3><ul class="nav menu">
+<li class="item-154"><a href="/" >Главная страница</a></li><li class="item-121"><a href="/about" >О сайте</a></li><li class="item-122"><a href="/english/arduino-mega-server" >English pages</a></li></ul>
+</div>
+                          </div>
+          </div>
+          <div class="cell-4">
+            <div class="box-footer3">&nbsp;
+                              <div class="well  well-dark"><h3 class="page-header">Проекты</h3><ul class="nav menu">
+<li class="item-153 alias-parent-active"><a href="/arduino-mega-server" >Arduino Mega Server</a></li><li class="item-155"><a href="/projects" >Все проекты</a></li></ul>
+</div>
+                          </div>
+          </div>
+          <div class="cell-4">
+            <div class="box-footer3">&nbsp;
+                              <div class="well  well-dark">
+
+<div class="custom well-dark"  >
+	<p>Контакты:<br><a href="mailto:info@hi-lab.ru">info@hi-lab.ru</a>
+
+<p/></div>
+</div>
+                          </div>
+          </div>
+          <div style="clear:both"></div>
+        </div>
+      </footer> <!-- footer -->
+    </div>
+  </div> <!-- level-footer -->
+
+  <div class="level-sub-footer">
+    <div class="block">
+      <div class="cell-3">
+        <div class="sub-footer1 hide-adaptive">
+          &nbsp;
+        </div>
+      </div>
+      <div class="cell-3">
+        <div class="sub-footer2">
+          <p>Hi-Lab.ru, 2016</p>
+        </div>
+      </div>
+      <div class="cell-3">
+        <div class="sub-footer3 hide-adaptive">
+          &nbsp;
+        </div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  </div> <!-- level-sub-footer -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter33972660 = new Ya.Metrika({
+                    id:33972660,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/33972660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
