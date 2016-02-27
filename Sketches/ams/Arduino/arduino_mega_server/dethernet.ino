@@ -7,7 +7,7 @@
 byte SELF_MAC[] = {0x00, 0x2A, 0xF5, 0x12, 0x67, 0xFA};
 byte SELF_IP[] =  {192, 168, 1, 230};
 //byte DNS[] = { , , , };
-byte GATEWAY[] = {192, 168, 1, 1};
+byte GATEWAY[] = {192, 168, 1, 231};
 
 void ethernetInit() {
   Serialprint("Modul Ethernet...\n");

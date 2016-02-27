@@ -24,8 +24,8 @@ char objSens[MAX_TEMP_SENSORS][12] = {"tempSTR", "tempHOM", "tempWRM", "temp04"}
 // Sensors ID's
 byte idTempDat[MAX_TEMP_SENSORS][MAX_ID_DIGITS] = { 
   {40, 255, 244, 81, 176, 21, 3}, // STR
-  {40, 221, 16, 81, 3, 0, 0}, // SRV
-  {40,  23, 98, 87, 3, 0, 0}, // WRM
+  {40, 255, 141, 79, 176, 21, 3}, // SRV
+  {40, 255, 111, 168, 177, 21, 1}, // WRM
   {40,  23, 98, 87, 3, 0, 0}, // temp04  
 }; 
 
