@@ -7,6 +7,10 @@ int ldr1 = 0; //и фоторезистора
 int ldr2 = 1; //второй фоторезистор для исключения ложных срабатываний
 int level1 = 0; //уровень освещенности
 int level2 = 0; //второй уровень освещенности
+const int buttonPin1 = 9;
+const int buttonPin2 = 10;
+int buttonState1 = 0;  
+int buttonState2 = 0;  
 
 #define DHTPIN 2 // номер пина, к которому подсоединен датчик
 DHT dht(DHTPIN, DHT11);
@@ -44,9 +48,11 @@ const static unsigned char PROGMEM logo16_glcd_bmp[] =
 
 int delay_sleep = 1000;
 int prom = 14;
-
+int porog = 800;
 void setup() //процедура setup
 {
+    pinMode(buttonPin1, INPUT);
+    pinMode(buttonPin2, INPUT);
 pinMode(led, OUTPUT); //указываем, что светодиод - выход
 Serial.begin(9600);
 dht.begin();
@@ -67,6 +73,29 @@ dht.begin();
 
 void loop() //процедура loop
 {
+  buttonState1 = digitalRead(buttonPin1);
+  buttonState2 = digitalRead(buttonPin2);
+   if (buttonState1 == HIGH) {
+    // turn LED on:
+    porog = porog + 10;
+    Serial.println(" + ");
+  } else {
+    // turn LED off:
+//    digitalWrite(ledPin, LOW);
+    Serial.println(" 0");
+  }
+
+   if (buttonState2 == HIGH) {
+    // turn LED on:
+    porog = porog - 10;
+    Serial.println(" - ");
+  } else {
+    // turn LED off:
+//    digitalWrite(ledPin, LOW);
+    Serial.println(" 0");
+  }
+
+  
   level1 = analogRead(ldr1);
   level2 = analogRead(ldr2);
   float h = dht.readHumidity();    //Считываем влажность
@@ -91,8 +120,9 @@ display.setTextSize(2);
 display.print(int(t));
 display.println("  C");
 display.setTextSize(1);
-display.print("light");
-  if ((level1 < 800)&(level2 < 800))
+//display.print("light");
+display.print(porog);
+  if ((level1 < porog)&(level2 < porog))
     {
     digitalWrite(led, HIGH);
     Serial.println(" ON");
