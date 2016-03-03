@@ -1,28 +1,27 @@
-#include <EEPROM.h>
+#include <EEPROM.h>                                          //библиотека работы с постоянной памятью для записи настроек.
+#include <Adafruit_GFX.h>                                    // библиотека работы со шрифтами
+#include <Adafruit_PCD8544.h>                                //библиотека работы с жк экраном от nokia3310
+#include "DHT.h"                                             //библиотека работы с датчиком DHT11
 
-#include <Adafruit_GFX.h>
-#include <Adafruit_PCD8544.h>
-#include "DHT.h"
+  int led = 8;                                               //переменная с номером пина реле
+  int ldr1 = 0;                                              //аналоговый пин фоторезистора
+  int ldr2 = 1;                                              //второй аналоговый пин фоторезистора для исключения ложных срабатываний
+  int level1 = 0;                                            //уровень освещенности с первого фоторезистора
+  int level2 = 0;                                            //уровень освещенности со второго фоторезистора
+  const int buttonPin1 = 9;                                  //цифровой пин первой кнопки "+"
+  const int buttonPin2 = 10;                                 //цифровой пин второй кнопки "-"
+  int buttonState1 = 0;                                      //изначальное состояние кнопки
+  int buttonState2 = 0;                                      //изначальное состояние кнопки
 
-int led = 8; //переменная с номером пина светодиода
-int ldr1 = 0; //и фоторезистора
-int ldr2 = 1; //второй фоторезистор для исключения ложных срабатываний
-int level1 = 0; //уровень освещенности
-int level2 = 0; //второй уровень освещенности
-const int buttonPin1 = 9;
-const int buttonPin2 = 10;
-int buttonState1 = 0;  
-int buttonState2 = 0;  
+#define DHTPIN 2                                             // номер пина, к которому подсоединен датчик
+  DHT dht(DHTPIN, DHT11);                                    //
+  // pin 7 - Serial clock out (SCLK)
+  // pin 6 - Serial data out (DIN)
+  // pin 5 - Data/Command select (D/C)
+  // pin 4 - LCD chip select (CS)
+  // pin 3 - LCD reset (RST)
 
-#define DHTPIN 2 // номер пина, к которому подсоединен датчик
-DHT dht(DHTPIN, DHT11);
-// pin 7 - Serial clock out (SCLK)
-// pin 6 - Serial data out (DIN)
-// pin 5 - Data/Command select (D/C)
-// pin 4 - LCD chip select (CS)
-// pin 3 - LCD reset (RST)
-Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);
-
+  Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);//
 #define NUMFLAKES 10
 #define XPOS 0
 #define YPOS 1
@@ -30,47 +29,48 @@ Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);
 #define LOGO16_GLCD_HEIGHT 16
 #define LOGO16_GLCD_WIDTH  16
 
-const static unsigned char PROGMEM logo16_glcd_bmp[] =
-{ B00000000, B11000000,
-  B00000001, B11000000,
-  B00000001, B11000000,
-  B00000011, B11100000,
-  B11110011, B11100000,
-  B11111110, B11111000,
-  B01111110, B11111111,
-  B00110011, B10011111,
-  B00011111, B11111100,
-  B00001101, B01110000,
-  B00011011, B10100000,
-  B00111111, B11100000,
-  B00111111, B11110000,
-  B01111100, B11110000,
-  B01110000, B01110000,
-  B00000000, B00110000 };
+  const static unsigned char PROGMEM logo16_glcd_bmp[] =     //массив цветочка (бантики)
+  { B00000000, B11000000,
+    B00000001, B11000000,
+    B00000001, B11000000,
+    B00000011, B11100000,
+    B11110011, B11100000,
+    B11111110, B11111000,
+    B01111110, B11111111,
+    B00110011, B10011111,
+    B00011111, B11111100,
+    B00001101, B01110000,
+    B00011011, B10100000,
+    B00111111, B11100000,
+    B00111111, B11110000,
+    B01111100, B11110000,
+    B01110000, B01110000,
+    B00000000, B00110000 };
 
-int delay_sleep = 1000;
-int prom = 14;
-int porog = 800;
-void setup() //процедура setup
+  int delay_sleep = 1000;                                    //время задержки в системе (обновления экрана и измерений)
+  int prom = 14;                                             //длительность периода работы лампы (пока тупо рисуем 14 часов на экране. потом будем измерять)
+  int porog = 800;                                           //пороговое значение уровня освещенности, когда включается освещение
+                                                             //в будущем читать из EEPROM (чтобы настройки запоминались)
+void setup()                                                 //процедура первичной инициализации
 {
-    pinMode(buttonPin1, INPUT);
-    pinMode(buttonPin2, INPUT);
-pinMode(led, OUTPUT); //указываем, что светодиод - выход
-Serial.begin(9600);
-dht.begin();
-  display.begin();
-  display.setContrast(60);
-  display.display(); // show splashscreen
-  delay(delay_sleep);
-  display.clearDisplay();   // clears the screen and buffer
-
-  // draw a single pixel
-  display.drawPixel(10, 10, BLACK);
+  Serial.begin(9600);                                        //инициализируем сериал на скорости 9600
+  dht.begin();                                               //инициализируем датчик влажности и температуры
+  display.begin();                                           //инициализируем экран
+  display.setContrast(60);                                   //указываем контраст экрана. 60 вроде как самое то
+  display.display();                                         // show splashscreen -- используется несколько раз. кажется для отображения заготовленных изменнений. проверить. если что удалить.
+  delay(delay_sleep);                                        // задержка. кажется нужна. связано с ком.выше, чтобы успел отобразиться (?)
+  display.clearDisplay();                                    // clears the screen and buffer
+  display.drawPixel(10, 10, BLACK);                          //draw a single pixel. было, тупо тупая фишка. можно будет удалить.
   display.display();
-  delay(delay_sleep);
+  delay(delay_sleep);                                        //
   display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(BLACK);
+  display.setTextSize(1);                                    //выбираем размер шрифта 1 (мелкий, кажется самый)
+  display.setTextColor(BLACK);                               //выбираем цвет шрифта (??)
+
+  pinMode(buttonPin1, INPUT);                                // настроить пин первой кнопки на ввод данных 
+  pinMode(buttonPin2, INPUT);                                // настроить пин второй кнопки на ввод данных
+  pinMode(led, OUTPUT);                                      //указываем, что пин реле - выход. в последующем переименовать это в понятное реле.
+    
 }
 
 void loop() //процедура loop
